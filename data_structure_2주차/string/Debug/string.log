@@ -1,13 +1,26 @@
-﻿빌드 시작: 2015-08-16 오후 5:29:38
-     1>2 노드의 "E:\Projects\polyminal\string\string.vcxproj" 프로젝트(Build 대상)입니다.
+﻿빌드 시작: 2015-08-16 오후 11:43:01
+     1>2 노드의 "C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\string\string.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
+     1>c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(96): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(134): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(136): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(136): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(148): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2213): note: 'std::_Copy_impl' 선언을 참조하십시오.
+         c:\users\fjen6\desktop\data_structure\data_structure\data_structure_2주차\string\main.cpp(50): note: 컴파일 중인 함수 템플릿 인스턴스화 '_OutIt std::copy<char*,char*>(_InIt,_InIt,_OutIt)'에 대한 참조를 확인하십시오.
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=char *
+                 ]
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Projects\polyminal\Debug\string.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\Projects\polyminal\Debug\string.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Projects\polyminal\Debug\string.lib" /MACHINE:X86 Debug\main.obj
-         string.vcxproj -> E:\Projects\polyminal\Debug\string.exe
-     1>"E:\Projects\polyminal\string\string.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\Debug\string.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\Debug\string.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\Debug\string.lib" /MACHINE:X86 Debug\main.obj
+         string.vcxproj -> C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\Debug\string.exe
+     1>"C:\Users\fjen6\Desktop\data_structure\Data_structure\data_structure_2주차\string\string.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.80
+경과 시간: 00:00:01.91

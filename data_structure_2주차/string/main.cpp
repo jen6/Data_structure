@@ -1,99 +1,182 @@
 #include <iostream>
-#include <string>
 #include <cstdlib>
 
-void frequency(std::string& str)
+class String
 {
-	char frequency_array[256] = { 0, };	//빈도수 저장하는 배열
-	for (size_t i = 0; i < str.length(); ++i)
+private:
+	char* str;
+	int len, capacity;
+	int* f;
+public:
+	// Constructor with content *init, length m
+	String();
+	String(char*);
+
+	~String();
+
+	// Return true if *this's string is equal to t's
+	// Otherwise, return false
+	bool operator==(String);
+	friend std::ostream & operator<<(std::ostream & os, const String& s);
+
+	// Return the number of *this's characters
+	int length();
+
+	void push_back(char);
+
+	void getFrequencyEachChar();
+
+	String deleteSubString(int, int);
+
+	String deleteChar(char);
+};
+
+String::String()
+{
+	len = 0;
+	f = nullptr;
+	capacity = 3;
+	str = new char[capacity];
+	str[0] = 0;
+}
+
+String::String(char * init)
+{
+	len = std::strlen(init);
+	capacity = len + 1;
+	f = nullptr;
+
+	str = new char[capacity];
+	std::copy(init, init + len + 1, str);
+}
+
+String::~String()
+{
+	delete[] str;
+	if (f != nullptr)
+	{
+		delete[] f;
+	}
+}
+
+bool String::operator==(String t)
+{
+	int ret = std::strcmp(str, t.str);
+	if (ret == 0)
+		return 1;
+	else
+		return 0;
+}
+
+// Return the number of *this's characters
+
+int String::length()
+{
+	return len;
+}
+
+void String::push_back(char c)
+{
+	if (len+1 == capacity)
+	{
+		capacity *= 2;
+		char * ptr = new char[capacity];
+		std::copy(str, str + len+1, ptr);
+		delete[] str;
+		str = ptr;
+	}
+	str[len] = c;
+	++len;
+	str[len] = 0;
+}
+
+void String::getFrequencyEachChar()
+{
+	f = new int[256]();
+	for (size_t i = 0; i < length(); ++i)
 	{
 		int idx = static_cast<int>(str[i]);
 		if (idx < 0)
 		{
 			throw std::exception("string out of range");
 		}
-		frequency_array[idx] += 1;
+		f[idx] += 1;
 	}
 
 	for (int i = 0; i < 255; ++i)
 	{
-		if (frequency_array[i] > 0)
+		if (f[i] > 0)
 		{
 			char c = static_cast<char>(i);
-			int d = static_cast<int>(frequency_array[i]);
-			std::cout << c 
-					<< " : " 
-					<< d
-					<< std::endl;
+			int d = static_cast<int>(f[i]);
+			std::cout << c
+				<< " : "
+				<< d
+				<< std::endl;
 		}
 	}
 }
 
-std::string Delete(std::string & str)
+String String::deleteSubString(int idxStart, int deleteLength)
 {
-	std::string ret_str;
-	size_t start, end;
+	String *ret_str = new String();
 
-	size_t len;
-	len = str.length();
-	
-	std::cout << "input start end" << std::endl;
-	std::cin >> start >> end;
+	int len;
+	len = length();
 
 	//start가 0보다 작거나 len보다 크거나 end가 start보다 작거나 end가 len보다 크면
 	//익셉션 발생
-	if (start < 0 || start > len || end < start || end > len)
+	if (idxStart < 0 || idxStart > len || deleteLength < idxStart || deleteLength > len)
 	{
 		throw std::exception("start or len out of range");
 	}
 
 	for (size_t i = 0; i < len; ++i)
 	{
-		if (i < start || i > end)
+		if (i < idxStart || i > deleteLength)
 		{
-			ret_str.push_back(str[i]);
+			ret_str->push_back(str[i]);
 		}
 	}
-
-	return ret_str;
+	return *ret_str;
 }
 
-std::string CharDelete(std::string& str)
+String String::deleteChar(char c)
 {
-	std::string ret_str;
-	char delete_char;
-	
-	std::cout << "input delete char" << std::endl;
+	String *ret_str = new String();
 
-	std::cin >> delete_char;
-
-	for (size_t i = 0; i < str.length(); ++i)
+	for (size_t i = 0; i < length(); ++i)
 	{
-		if (str[i] != delete_char)
+		if (str[i] != c)
 		{
-			ret_str.push_back(str[i]);
+			ret_str->push_back(str[i]);
 
 		}
 	}
+	return *ret_str;
+}
 
-	return ret_str;
+std::ostream & operator<<(std::ostream & os, const String& s)
+{
+	os << s.str;
+	return os;
 }
 
 
 int main()
 {
-	std::string s1 = "asdfasndflfnlksadfnlaksdnflnl";
+	String s1("asdfasndflfnlksadfnlaksdnflnl");
 	std::cout << "original string : " << s1 << std::endl;
 	try 
 	{	
-		frequency(s1);
-		std::cout << Delete(s1) << std::endl;
+		s1.getFrequencyEachChar();
+		std::cout << "after delsubstring(0,3) : " << s1.deleteSubString(0, 3) << std::endl;
 	}
 	catch (std::exception &e) 
 	{
 		std::cerr << e.what() << std::endl;
 		return 1;
 	}
-	std::cout << CharDelete(s1) << std::endl;
+	std::cout << "after deletechar(a) : " << s1.deleteChar('a') << std::endl;
 	return 0;
 }
